@@ -1,0 +1,44 @@
+@name InternetFriends Library by Runic
+@inputs 
+@outputs 
+@persist
+@trigger 
+
+##############################################################################################
+###  _____      _                       _    ______    _                _     
+### |_   _|    | |                     | |   |  ___|  (_)              | |    
+###   | | _ __ | |_ ___ _ __ _ __   ___| |_  | |_ _ __ _  ___ _ __   __| |___ 
+###   | || '_ \| __/ _ \ '__| '_ \ / _ \ __| |  _| '__| |/ _ \ '_ \ / _` / __|
+###  _| || | | | ||  __/ |  | | | |  __/ |_  | | | |  | |  __/ | | | (_| \__ \
+###  \___/_| |_|\__\___|_|  |_| |_|\___|\__| \_| |_|  |_|\___|_| |_|\__,_|___/
+###
+#### This is used to determine if you can touch a prop via cppi and if someone buddied you.
+#### It does need nexuscore though.
+####
+#### Have fun. 
+####
+#### (c) 2020 by Runic/Groove
+##############################################################################################
+
+function number canTouch(Prop:entity) {
+    Yes = 0
+    OldCol = Prop:getColor()
+    CheckCol = OldCol - 1
+    Prop:setColor(CheckCol)
+    if(Prop:getColor() == CheckCol){
+        Yes = 1
+    }
+    Prop:setColor(OldCol)
+    return Yes
+}
+function number isBuddied(Ply:entity) {
+    Yes = 0
+    OldPos = Ply:pos()
+    CheckPos = OldPos - 1333
+    Ply:teleport(CheckPos)
+    if(Ply:pos() != OldPos){
+        Yes = 1
+    }
+    Ply:teleport(OldPos)
+    return Yes
+}

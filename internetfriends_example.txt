@@ -1,0 +1,10 @@
+@name InternetFriends Example
+@inputs 
+@outputs 
+@persist
+@trigger 
+
+#include "lib_internetfriends"
+foreach(V, Plye:entity = players()){
+    print("Ply: "+Plye:name()+" Buddied?: "+ isBuddied(Plye))
+}
